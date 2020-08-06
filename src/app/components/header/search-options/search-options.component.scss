@@ -1,0 +1,30 @@
+@import '../../../../theme/colors.scss';
+
+.sorting-category-container {
+  margin-left: 20px;
+  color: $text-blue;
+  cursor: pointer;
+}
+
+.search-options-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // padding: 40px 0 20px 0;
+}
+
+.hint {
+  color: $text-grey;
+}
+
+.keyword-filter-container {
+  display: flex;
+  align-items: center;
+  .input {
+    margin-left: 10px;
+    padding: 5px;
+    border: 0;
+    border-radius: 3px;
+    color: $text-black;
+  }
+}

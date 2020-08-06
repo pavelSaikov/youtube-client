@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { IVideoStatistics } from '../../../models/search-response.models';
 
 @Component({
   selector: 'app-video-statistics',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./video-statistics.component.scss'],
 })
 export class VideoStatisticsComponent {
-  constructor() {}
+  @Input() public statistics: IVideoStatistics;
 }

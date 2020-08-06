@@ -1,1 +1,26 @@
-<p>video-statistics works!</p>
+<div class="video-statistics-container">
+  <div class="statistics-item first">
+    <div class="image-container">
+      <img src="../../../../assets/views.svg" width="100%" />
+    </div>
+    <div>{{ statistics.viewCount }}</div>
+  </div>
+  <div class="statistics-item">
+    <div class="image-container">
+      <img src="../../../../assets/likes.svg" width="100%" />
+    </div>
+    <div>{{ statistics.likeCount }}</div>
+  </div>
+  <div class="statistics-item">
+    <div class="image-container">
+      <img src="../../../../assets/dislikes.svg" width="100%" />
+    </div>
+    <div>{{ statistics.dislikeCount }}</div>
+  </div>
+  <div class="statistics-item">
+    <div class="image-container">
+      <img src="../../../../assets/comments.svg" width="100%" />
+    </div>
+    <div>{{ statistics.commentCount }}</div>
+  </div>
+</div>

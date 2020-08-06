@@ -1,1 +1,17 @@
-<p>search-item works!</p>
+<div class="search-item-container">
+  <div class="content-container">
+    <div class="image-container">
+      <img src="{{ imageUrl }}" width="100%" />
+    </div>
+    <app-video-statistics [statistics]="statistics"></app-video-statistics>
+    <div class="title-container">
+      {{ title }}
+    </div>
+    <div class="button-container">
+      <div class="button-image-container">
+        <img src="../../../../../assets/more.svg" />
+      </div>
+    </div>
+  </div>
+  <app-publishing-indicator [publishingDate]="publishingDate"></app-publishing-indicator>
+</div>

@@ -1,1 +1,9 @@
-<p>search-options works!</p>
+<div class="search-options-container" [@openClose]="isVisible ? 'open' : 'closed'">
+  <div class="hint">Sorting by:</div>
+  <div class="sorting-category-container">Date</div>
+  <div class="sorting-category-container">Count of Views</div>
+  <div class="keyword-filter-container sorting-category-container">
+    <div>By Word or Sentence</div>
+    <input class="input" />
+  </div>
+</div>

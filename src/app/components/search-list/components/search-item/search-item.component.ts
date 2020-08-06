@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { IVideoStatistics } from '../../../../models/search-response.models';
 
 @Component({
   selector: 'app-search-item',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent {
-  constructor() {}
+  @Input() public imageUrl: string;
+  @Input() public statistics: IVideoStatistics;
+  @Input() public title: string;
+  @Input() public publishingDate: string;
 }

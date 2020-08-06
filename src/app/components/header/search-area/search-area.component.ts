@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-area',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-area.component.scss'],
 })
 export class SearchAreaComponent {
-  constructor() {}
+  @Output() public toggleSortingOptionsMenu: EventEmitter<void> = new EventEmitter<void>();
+
+  public onSortingOptionsClick(): void {
+    this.toggleSortingOptionsMenu.emit();
+  }
 }

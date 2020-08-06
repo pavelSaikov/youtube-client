@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor() {}
+  public isSearchOptionsVisible: boolean = false;
+
+  public toggleSortingOptionsVisibility(): void {
+    this.isSearchOptionsVisible = !this.isSearchOptionsVisible;
+  }
 }

@@ -5,12 +5,10 @@ export interface IVideoImage {
 }
 
 export interface IVideoStatistics {
-  statistics: {
-    viewCount: string;
-    likeCount: string;
-    dislikeCount: string;
-    commentCount: string;
-  };
+  viewCount: string;
+  likeCount: string;
+  dislikeCount: string;
+  commentCount: string;
 }
 
 export interface IVideoInfo {
@@ -24,6 +22,7 @@ export interface IVideoInfo {
       high: IVideoImage;
     };
   };
+  statistics: IVideoStatistics;
 }
 
 export interface ISearchResponse {
