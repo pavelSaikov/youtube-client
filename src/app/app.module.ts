@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSliderModule } from '@angular/material/slider';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { environment } from '../environments/environment.prod';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormFieldComponent } from './components/common/form-field/form-field.component';
@@ -23,6 +18,8 @@ import { RegistrationFormComponent } from './components/registration-form/regist
 import { SearchItemComponent } from './components/search-list/components/search-item/search-item.component';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { VideoDescriptionComponent } from './components/video-description/video-description.component';
+import { appReducer } from './store/app.reducer';
+import { StoreCategories } from './store/index';
 
 @NgModule({
   declarations: [
@@ -44,14 +41,20 @@ import { VideoDescriptionComponent } from './components/video-description/video-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
+    StoreModule.forRoot(
+      { [StoreCategories.sorting]: appReducer },
+      {
+        runtimeChecks: {
+          strictStateImmutability: !environment.production,
+          strictActionImmutability: !environment.production,
+        },
+      },
+    ),
+    environment.production
+      ? []
+      : StoreDevtoolsModule.instrument({
+          maxAge: 50,
+        }),
   ],
   providers: [],
   bootstrap: [AppComponent],

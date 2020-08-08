@@ -1,4 +1,6 @@
 <div class="header">
-  <app-search-area (toggleSortingOptionsMenu)="toggleSortingOptionsVisibility()"></app-search-area>
-  <app-search-options [isVisible]="isSearchOptionsVisible"></app-search-options>
+  <div class="app-wrapper">
+    <app-search-area (toggleSortingOptionsMenu)="toggleSortingOptionsVisibility()"></app-search-area>
+    <app-search-options [isVisible]="isSearchOptionsVisible"></app-search-options>
+  </div>
 </div>

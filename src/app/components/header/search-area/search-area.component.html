@@ -4,8 +4,8 @@
       <img src="../../../../assets/youtube-logo.svg" width="100%" />
     </div>
     <div class="input-container">
-      <input class="input" placeholder="What are you want to find out?" />
-      <div class="svg-container search-button">
+      <input #input class="input" placeholder="What are you want to find out?" />
+      <div class="svg-container search-button" (click)="onSearchClick(input.value)">
         <img src="../../../../assets/search-button.svg" width="100%" />
       </div>
     </div>

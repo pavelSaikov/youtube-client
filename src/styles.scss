@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './theme/font.scss';
 
 html,
 body {
@@ -7,9 +8,14 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: $font-family;
 }
 
 input {
   outline: none;
+  font-family: $font-family;
+}
+
+.app-wrapper {
+  width: 1200px;
 }

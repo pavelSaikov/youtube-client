@@ -1,12 +1,13 @@
 .video-statistics-container {
   display: flex;
   flex-wrap: nowrap;
-  padding: 10px 5px;
+  justify-content: center;
 }
 
 .statistics-item {
   display: flex;
   margin-left: 10px;
+  font-size: 11px;
   &.first {
     margin-left: 0;
   }
@@ -15,4 +16,6 @@
 .image-container {
   display: flex;
   margin-right: 2px;
+  min-width: 15px;
+  width: 15px;
 }

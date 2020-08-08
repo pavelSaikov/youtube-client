@@ -1,16 +1,15 @@
 @import '../../../../theme/colors.scss';
 
-.sorting-category-container {
-  margin-left: 20px;
-  color: $text-blue;
-  cursor: pointer;
-}
-
 .search-options-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding: 40px 0 20px 0;
+}
+
+.sorting-category-container {
+  margin-left: 20px;
+  color: $text-blue;
+  cursor: pointer;
 }
 
 .hint {

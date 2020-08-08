@@ -1,9 +1,9 @@
 <div class="search-options-container" [@openClose]="isVisible ? 'open' : 'closed'">
   <div class="hint">Sorting by:</div>
-  <div class="sorting-category-container">Date</div>
-  <div class="sorting-category-container">Count of Views</div>
+  <div class="sorting-category-container" (click)="sortByDate()">Date</div>
+  <div class="sorting-category-container" (click)="sortByViews()">Count of Views</div>
   <div class="keyword-filter-container sorting-category-container">
     <div>By Word or Sentence</div>
-    <input class="input" />
+    <input #input class="input" (keyup)="onKeyUp($event, input.value)" />
   </div>
 </div>

@@ -1,3 +1,8 @@
+.search-list-container {
+  display: flex;
+  justify-content: center;
+}
+
 .search-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
