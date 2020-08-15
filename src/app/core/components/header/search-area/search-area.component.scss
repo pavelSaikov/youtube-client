@@ -1,0 +1,64 @@
+@import '../../../../../theme/colors.scss';
+
+.svg-container {
+  display: flex;
+}
+
+.square-button {
+  width: 33px;
+  cursor: pointer;
+}
+
+.search-area-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0 5px 0;
+}
+
+.searching-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.youtube-logo {
+  width: 65px;
+}
+
+.input-container {
+  display: flex;
+  margin: 0 10px;
+}
+
+.input {
+  width: 300px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 3px 0 0 3px;
+  background-color: white;
+  color: $text-black;
+  &::-webkit-input-placeholder {
+    color: $text-grey;
+  }
+}
+
+.search-button {
+  width: 110px;
+  cursor: pointer;
+}
+
+.account-info {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  margin-right: 10px;
+  color: $text-black;
+}

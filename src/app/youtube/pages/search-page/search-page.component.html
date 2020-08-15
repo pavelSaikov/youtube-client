@@ -1,0 +1,5 @@
+<app-search-list
+  *ngIf="searchResults"
+  [searchResults]="searchResults"
+  (showDescription)="onShowDescriptionClick($event)"
+></app-search-list>
