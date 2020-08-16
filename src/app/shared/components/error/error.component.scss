@@ -1,0 +1,25 @@
+@import '../../../../theme/colors.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.content-container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.image-container {
+  display: flex;
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+  color: $text-grey;
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 24px;
+}

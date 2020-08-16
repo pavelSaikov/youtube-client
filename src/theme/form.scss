@@ -1,0 +1,48 @@
+@import './colors.scss';
+
+.form-container {
+  width: 400px;
+  padding: 20px 25px 30px 25px;
+  border-radius: 8px;
+  background: $form-background;
+}
+
+.header-container {
+  padding: 10px 0 15px 0;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.field-container {
+  margin-bottom: 15px;
+}
+
+.field-header {
+  font-size: 12px;
+  margin: 0 0 5px 5px;
+  color: $description-grey;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+
+  .link-container {
+    padding: 8px 20px;
+    .link {
+      color: $background-blue;
+      border-bottom: 1px solid $background-blue;
+      cursor: pointer;
+    }
+  }
+
+  .button {
+    padding: 8px 0;
+    width: 120px;
+    text-align: center;
+    border-radius: 8px;
+    color: white;
+    background: $background-blue;
+    cursor: pointer;
+  }
+}

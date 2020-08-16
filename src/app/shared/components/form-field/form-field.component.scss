@@ -1,0 +1,23 @@
+@import '../../../../theme/colors.scss';
+
+.input {
+  width: 100%;
+  padding: 10px 8px;
+  box-sizing: border-box;
+  background: $form-field-grey;
+  border: 0;
+}
+
+.validator {
+  height: 7px;
+  border-radius: 0 0 8px 8px;
+  background: $form-field-validator-grey;
+
+  &.correct {
+    background: $form-field-validation-correct;
+  }
+
+  &.incorrect {
+    background: $form-field-validation-incorrect;
+  }
+}

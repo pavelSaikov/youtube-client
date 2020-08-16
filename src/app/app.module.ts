@@ -7,6 +7,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment.prod';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { YoutubeModule } from './youtube/youtube.module';
 
@@ -31,6 +32,7 @@ import { YoutubeModule } from './youtube/youtube.module';
       : StoreDevtoolsModule.instrument({
           maxAge: 50,
         }),
+    AuthModule,
     CoreModule,
     YoutubeModule,
   ],

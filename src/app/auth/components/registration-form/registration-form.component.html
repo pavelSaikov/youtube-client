@@ -1,1 +1,32 @@
-<p>registration-form works!</p>
+<div class="form-container">
+  <div class="header-container"><p>Registration</p></div>
+  <div class="field-container">
+    <p class="field-header">first name</p>
+    <app-form-field
+      (validateValue)="validateFirstName($event)"
+      [isCorrectInput]="isFirstNameValid"
+    ></app-form-field>
+  </div>
+  <div class="field-container">
+    <p class="field-header">last name</p>
+    <app-form-field
+      (validateValue)="validateLastName($event)"
+      [isCorrectInput]="isLastNameValid"
+    ></app-form-field>
+  </div>
+  <div class="field-container">
+    <p class="field-header">mail</p>
+    <app-form-field (validateValue)="validateMail($event)" [isCorrectInput]="isMailValid"></app-form-field>
+  </div>
+  <div class="field-container">
+    <p class="field-header">password</p>
+    <app-form-field
+      (validateValue)="validatePassword($event)"
+      [isCorrectInput]="isPasswordValid"
+    ></app-form-field>
+  </div>
+  <div class="buttons-container">
+    <div class="link-container"><p class="link" (click)="onRedirectToLoginClick()">Login</p></div>
+    <div class="button" (click)="onRegistrationClick()"><p>Registration</p></div>
+  </div>
+</div>

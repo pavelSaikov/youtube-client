@@ -1,4 +1,5 @@
+// tslint:disable: typedef
 import { ErrorComponent } from './error/error.component';
+import { FormFieldComponent } from './form-field/form-field.component';
 
-// tslint:disable-next-line: typedef
-export const SHARED_COMPONENTS = [ErrorComponent];
+export const SHARED_COMPONENTS = [ErrorComponent, FormFieldComponent];
