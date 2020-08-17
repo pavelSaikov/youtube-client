@@ -11,3 +11,4 @@ export const videoForDetailedDescriptionSelector = createSelector(
   ({ videoForDetailedDescription }: { videoForDetailedDescription: IVideoInfo }): IVideoInfo =>
     videoForDetailedDescription,
 );
+export const searchResultsSelector = createSelector(featureSelector, ({ searchResults }) => searchResults);

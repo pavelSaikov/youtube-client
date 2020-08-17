@@ -8,3 +8,7 @@ export const setVideoForDetailedDescription = createAction(
   '[Youtube] Set Video For Detailed Description',
   props<IActionPayload<IVideoInfo>>(),
 );
+export const setSearchResults = createAction(
+  '[Youtube] Set Search Results',
+  props<IActionPayload<IVideoInfo[]>>(),
+);

@@ -62,3 +62,14 @@
   margin-right: 10px;
   color: $text-black;
 }
+
+.logout-button {
+  width: 90px;
+  margin-left: 10px;
+  padding: 8px 0;
+  text-align: center;
+  color: white;
+  background: $background-blue;
+  border-radius: 8px;
+  cursor: pointer;
+}

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
+import { ILoginInfo } from './login-form.models';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -10,6 +12,7 @@ export class LoginFormComponent {
   private password: string;
 
   @Output() public redirectToRegistration: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public loginUser: EventEmitter<ILoginInfo> = new EventEmitter<ILoginInfo>();
 
   public isLoginCorrect: boolean;
   public isPasswordCorrect: boolean;
@@ -28,8 +31,7 @@ export class LoginFormComponent {
       return;
     }
 
-    console.log(this.login);
-    console.log(this.password);
+    this.loginUser.emit({ login: this.login, password: this.password });
   }
 
   public onRegistrationClick(): void {

@@ -5,4 +5,5 @@ export interface IActionPayload<T> {
 export enum Feature {
   Header = 'header',
   Youtube = 'youtube',
+  Authorization = 'authorization',
 }

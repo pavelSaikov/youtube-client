@@ -2,7 +2,6 @@
 import { createAction, props } from '@ngrx/store';
 
 import { IActionPayload } from '../../../../store/index';
-import { IVideoInfo } from '../../../../youtube/models/search-response.models';
 import { ISortingParams, SortCategories } from '../search-options/search-options.models';
 
 export const setSortCategory = createAction(
@@ -13,8 +12,4 @@ export const setSortingKeyWord = createAction('[App] Set Sorting Keyword', props
 export const setSortingParams = createAction(
   '[App] Set Sorting Params',
   props<IActionPayload<ISortingParams>>(),
-);
-export const setSearchResults = createAction(
-  '[App] Set Search Results',
-  props<IActionPayload<IVideoInfo[]>>(),
 );

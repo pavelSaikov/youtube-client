@@ -7,10 +7,10 @@ import { map } from 'rxjs/operators';
 import {
     sortCategoriesSortFunctionsMap, ISortingParams
 } from '../../../core/components/header/search-options/search-options.models';
-import { searchResultsSelector, sortingParamsSelector } from '../../../core/components/header/store/header.selectors';
+import { sortingParamsSelector } from '../../../core/components/header/store/header.selectors';
 import { IVideoInfo } from '../../models/search-response.models';
 import { setVideoForDetailedDescription } from '../../store/youtube.actions';
-import { YoutubeRoutes } from '../../youtube-routing.models';
+import { searchResultsSelector } from '../../store/youtube.selectors';
 
 @Component({
   selector: 'app-search-page',
@@ -53,7 +53,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   public onShowDescriptionClick(videoInfo: IVideoInfo): void {
     this.store.dispatch(setVideoForDetailedDescription({ payload: videoInfo }));
-    this.router.navigate([`${YoutubeRoutes.Description}`], { relativeTo: this.activatedRoute });
+    this.router.navigate(['./description', videoInfo.id], { relativeTo: this.activatedRoute });
   }
 
   public ngOnInit(): void {

@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthRoutes } from './auth-routing.models';
+import { ErrorComponent } from '../shared/components/error/error.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 
 const routes: Routes = [
-  { path: AuthRoutes.Login, component: LoginPageComponent },
-  { path: AuthRoutes.Registration, component: RegistrationPageComponent },
-  { path: '**', redirectTo: AuthRoutes.Login, pathMatch: 'full' },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'registration', component: RegistrationPageComponent },
+  { path: '**', redirectTo: '404', pathMatch: 'full' },
+  { path: '404', component: ErrorComponent },
 ];
 
 @NgModule({
