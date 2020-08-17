@@ -1,0 +1,8 @@
+<div class="form-field-container">
+  <input #input class="input" (keyup)="onKeyUp(input.value)" />
+  <div
+    class="validator"
+    [class.correct]="isInputAnything && isCorrectInput"
+    [class.incorrect]="isInputAnything && !isCorrectInput"
+  ></div>
+</div>

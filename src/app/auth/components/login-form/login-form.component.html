@@ -1,0 +1,21 @@
+<div class="form-container">
+  <div class="header-container"><p>Login</p></div>
+  <div class="field-container">
+    <p class="field-header">login</p>
+    <app-form-field
+      [isCorrectInput]="isLoginCorrect"
+      (validateValue)="validateLogin($event)"
+    ></app-form-field>
+  </div>
+  <div class="field-container">
+    <p class="field-header">password</p>
+    <app-form-field
+      [isCorrectInput]="isPasswordCorrect"
+      (validateValue)="validatePassword($event)"
+    ></app-form-field>
+  </div>
+  <div class="buttons-container">
+    <div class="link-container"><p class="link" (click)="onRegistrationClick()">Registration</p></div>
+    <div class="button" (click)="onLoginClick()">Login</div>
+  </div>
+</div>

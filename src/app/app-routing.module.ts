@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { LoginGuard } from './auth/guards/login-guard/login.guard';
+import { ErrorComponent } from './shared/components/error/error.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  {
+    path: 'search',
+    loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule),
+    canActivate: [LoginGuard],
+  },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: '**', component: ErrorComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

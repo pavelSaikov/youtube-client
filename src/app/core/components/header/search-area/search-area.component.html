@@ -1,0 +1,23 @@
+<div class="search-area-container">
+  <div class="searching-area">
+    <div class="svg-container youtube-logo">
+      <img src="../../../../assets/youtube-logo.svg" width="100%" />
+    </div>
+    <div class="input-container">
+      <input [(ngModel)]="videoName" class="input" placeholder="What are you want to find out?" />
+      <div class="svg-container search-button" (click)="onSearchClick()">
+        <img src="../../../../assets/search-button.svg" width="100%" />
+      </div>
+    </div>
+    <div class="svg-container square-button" (click)="onSortingOptionsClick()">
+      <img src="../../../../assets/options.svg" width="100%" />
+    </div>
+  </div>
+  <div class="account-info">
+    <div *ngIf="userName" class="name">{{ userName.firstName }} {{ userName.lastName }}</div>
+    <div class="svg-container square-button">
+      <img src="../../../../assets//login.svg" width="100%" />
+    </div>
+    <div class="logout-button" (click)="onLogoutClick()">Logout</div>
+  </div>
+</div>

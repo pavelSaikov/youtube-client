@@ -1,0 +1,28 @@
+<div *ngIf="videoInfo" class="description-container">
+  <div>
+    <img class="back-button" (click)="onBackClick()" src="../../../../assets/back.svg" />
+  </div>
+  <div class="content-container">
+    <div class="image-container">
+      <img src="{{ videoInfo.snippet.thumbnails.high.url }}" width="100%" />
+    </div>
+    <div>
+      <div class="information-container">
+        <div class="header-container">
+          <div class="title-container">{{ videoInfo.snippet.title }}</div>
+          <div class="date-container">{{ videoInfo.snippet.publishedAt | date: 'fullDate' }}</div>
+        </div>
+        <div class="description-text-container">
+          <div class="description-header">Description:</div>
+          <div class="description-text">{{ videoInfo.snippet.description }}</div>
+        </div>
+        <div class="statistics-container">
+          <app-video-statistics [statistics]="videoInfo.statistics"></app-video-statistics>
+        </div>
+      </div>
+    </div>
+    <div class="video-description-container">
+      <app-publishing-indicator [publishingDate]="videoInfo.snippet.publishedAt"></app-publishing-indicator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="search-list-container">
+  <div class="app-wrapper search-list">
+    <app-search-item
+      *ngFor="let item of searchResults; trackBy: trackByVideoId"
+      [imageUrl]="item.snippet.thumbnails.medium.url"
+      [title]="item.snippet.title"
+      [statistics]="item.statistics"
+      [publishingDate]="item.snippet.publishedAt"
+      [id]="item.id"
+      (showDescription)="onMoreClick($event)"
+    ></app-search-item>
+  </div>
+</div>

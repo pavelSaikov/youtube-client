@@ -1,4 +1,4 @@
-import { IVideoInfo } from '../app/models/search-response.models';
+import { IVideoInfo } from '../app/youtube/models/search-response.models';
 
 export const data: IVideoInfo[] = [
   {
