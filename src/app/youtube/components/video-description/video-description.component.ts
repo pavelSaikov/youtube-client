@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { IVideoInfo } from '../../models/search-response.models';
+import { IVideoInfoWithStatistics } from '../../models/search-response.models';
 
 @Component({
   selector: 'app-video-description',
@@ -8,7 +8,7 @@ import { IVideoInfo } from '../../models/search-response.models';
   styleUrls: ['./video-description.component.scss'],
 })
 export class VideoDescriptionComponent {
-  @Input() public videoInfo: IVideoInfo;
+  @Input() public videoInfo: IVideoInfoWithStatistics;
 
   @Output() public back: EventEmitter<void> = new EventEmitter<void>();
 

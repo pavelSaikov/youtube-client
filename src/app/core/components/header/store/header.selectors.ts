@@ -5,3 +5,7 @@ import { Feature } from '../../../../store/index';
 
 const featureSelector = createFeatureSelector(Feature.Header);
 export const sortingParamsSelector = createSelector(featureSelector, ({ sortingParams }) => sortingParams);
+export const isSearchInputAvailableSelector = createSelector(
+  featureSelector,
+  ({ isSearchInputAvailable }) => isSearchInputAvailable,
+);

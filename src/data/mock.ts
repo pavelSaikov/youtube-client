@@ -1,6 +1,6 @@
-import { IVideoInfo } from '../app/youtube/models/search-response.models';
+import { IVideoInfoWithStatistics } from '../app/youtube/models/search-response.models';
 
-export const data: IVideoInfo[] = [
+export const data: IVideoInfoWithStatistics[] = [
   {
     id: 'YN8zNnV0sK8',
     snippet: {

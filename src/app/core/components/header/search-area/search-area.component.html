@@ -4,10 +4,12 @@
       <img src="../../../../assets/youtube-logo.svg" width="100%" />
     </div>
     <div class="input-container">
-      <input [(ngModel)]="videoName" class="input" placeholder="What are you want to find out?" />
-      <div class="svg-container search-button" (click)="onSearchClick()">
-        <img src="../../../../assets/search-button.svg" width="100%" />
-      </div>
+      <input
+        [(ngModel)]="videoName"
+        class="input"
+        placeholder="What are you want to find out?"
+        (input)="onSearchInput()"
+      />
     </div>
     <div class="svg-container square-button" (click)="onSortingOptionsClick()">
       <img src="../../../../assets/options.svg" width="100%" />
@@ -18,6 +20,6 @@
     <div class="svg-container square-button">
       <img src="../../../../assets//login.svg" width="100%" />
     </div>
-    <div class="logout-button" (click)="onLogoutClick()">Logout</div>
+    <div class="logout-button" (click)="onLogoutClick()">{{ userName ? 'Logout' : 'Login' }}</div>
   </div>
 </div>

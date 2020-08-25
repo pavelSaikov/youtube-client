@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { IVideoInfo } from '../../models/search-response.models';
+import { IVideoInfoWithStatistics } from '../../models/search-response.models';
 
 @Component({
   selector: 'app-search-list',
@@ -8,16 +8,20 @@ import { IVideoInfo } from '../../models/search-response.models';
   styleUrls: ['./search-list.component.scss'],
 })
 export class SearchListComponent {
-  @Input() public searchResults: IVideoInfo[];
+  @Input() public searchResults: IVideoInfoWithStatistics[];
 
-  @Output() public showDescription: EventEmitter<IVideoInfo> = new EventEmitter<IVideoInfo>();
+  @Output() public showDescription: EventEmitter<IVideoInfoWithStatistics> = new EventEmitter<
+    IVideoInfoWithStatistics
+  >();
 
-  public trackByVideoId(_index: number, item: IVideoInfo): string {
-    return item.id;
+  public trackByVideoId(_index: number, item: IVideoInfoWithStatistics): string {
+    return item.id.videoId;
   }
 
-  public onMoreClick(id: string): void {
-    const videoDescription: IVideoInfo = { ...this.searchResults.find(el => el.id === id) };
+  public onMoreClick(id: { videoId: string }): void {
+    const videoDescription: IVideoInfoWithStatistics = {
+      ...this.searchResults.find(el => el.id.videoId === id.videoId),
+    };
     this.showDescription.emit(videoDescription);
   }
 }
