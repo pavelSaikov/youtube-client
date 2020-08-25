@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IVideoInfo } from '../../models/search-response.models';
+import { IVideoInfoWithStatistics } from '../../models/search-response.models';
 import { searchResultsSelector, videoForDetailedDescriptionSelector } from '../../store/youtube.selectors';
 
 @Component({
@@ -14,14 +14,16 @@ import { searchResultsSelector, videoForDetailedDescriptionSelector } from '../.
 })
 export class DescriptionPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
-  private searchResults: IVideoInfo[];
+  private searchResults: IVideoInfoWithStatistics[];
 
-  private searchResults$: Observable<IVideoInfo[]> = this.store.select(searchResultsSelector).pipe(
-    map(searchResults => {
-      this.searchResults = searchResults;
-      return searchResults;
-    }),
-  );
+  private searchResults$: Observable<IVideoInfoWithStatistics[]> = this.store
+    .select(searchResultsSelector)
+    .pipe(
+      map(searchResults => {
+        this.searchResults = searchResults;
+        return searchResults;
+      }),
+    );
 
   private paramMap$: Observable<ParamMap> = this.activatedRoute.paramMap.pipe(
     map(params => {
@@ -33,7 +35,9 @@ export class DescriptionPageComponent implements OnInit, OnDestroy {
     }),
   );
 
-  public videoDescription$: Observable<IVideoInfo> = this.store.select(videoForDetailedDescriptionSelector);
+  public videoDescription$: Observable<IVideoInfoWithStatistics> = this.store.select(
+    videoForDetailedDescriptionSelector,
+  );
 
   constructor(private store: Store, private router: Router, private activatedRoute: ActivatedRoute) {}
 

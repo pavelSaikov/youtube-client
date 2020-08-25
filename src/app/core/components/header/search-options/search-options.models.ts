@@ -1,4 +1,4 @@
-import { IVideoInfo } from '../../../../youtube/models/search-response.models';
+import { IVideoInfoWithStatistics } from '../../../../youtube/models/search-response.models';
 
 export enum SortCategories {
   byDate = 'byDate',
@@ -15,7 +15,7 @@ export interface ISortingParams {
 }
 
 export interface IVideoCategorySorter {
-  (i1: IVideoInfo, i2: IVideoInfo, word?: string): number;
+  (i1: IVideoInfoWithStatistics, i2: IVideoInfoWithStatistics, word?: string): number;
 }
 
 export const sortCategoriesSortFunctionsMap: Map<SortCategories, IVideoCategorySorter> = new Map<
@@ -24,7 +24,7 @@ export const sortCategoriesSortFunctionsMap: Map<SortCategories, IVideoCategoryS
 >([
   [
     SortCategories.byDate,
-    (i1: IVideoInfo, i2: IVideoInfo): number => {
+    (i1: IVideoInfoWithStatistics, i2: IVideoInfoWithStatistics): number => {
       const dateI1: number = new Date(i1.snippet.publishedAt).getTime();
       const dateI2: number = new Date(i2.snippet.publishedAt).getTime();
 
@@ -33,7 +33,7 @@ export const sortCategoriesSortFunctionsMap: Map<SortCategories, IVideoCategoryS
   ],
   [
     SortCategories.byDateReverse,
-    (i1: IVideoInfo, i2: IVideoInfo): number => {
+    (i1: IVideoInfoWithStatistics, i2: IVideoInfoWithStatistics): number => {
       const dateI1: number = new Date(i1.snippet.publishedAt).getTime();
       const dateI2: number = new Date(i2.snippet.publishedAt).getTime();
 
@@ -42,7 +42,7 @@ export const sortCategoriesSortFunctionsMap: Map<SortCategories, IVideoCategoryS
   ],
   [
     SortCategories.byCountViews,
-    (i1: IVideoInfo, i2: IVideoInfo): number => {
+    (i1: IVideoInfoWithStatistics, i2: IVideoInfoWithStatistics): number => {
       const viewsI1: number = Number.parseInt(i1.statistics.viewCount, 10);
       const viewsI2: number = Number.parseInt(i2.statistics.viewCount, 10);
 
@@ -51,7 +51,7 @@ export const sortCategoriesSortFunctionsMap: Map<SortCategories, IVideoCategoryS
   ],
   [
     SortCategories.byCountViewsReverse,
-    (i1: IVideoInfo, i2: IVideoInfo): number => {
+    (i1: IVideoInfoWithStatistics, i2: IVideoInfoWithStatistics): number => {
       const viewsI1: number = Number.parseInt(i1.statistics.viewCount, 10);
       const viewsI2: number = Number.parseInt(i2.statistics.viewCount, 10);
 
@@ -60,7 +60,7 @@ export const sortCategoriesSortFunctionsMap: Map<SortCategories, IVideoCategoryS
   ],
   [
     SortCategories.byWord,
-    function (i1: IVideoInfo, i2: IVideoInfo): number {
+    function (i1: IVideoInfoWithStatistics, i2: IVideoInfoWithStatistics): number {
       const keyWord: string = this.keyWord.toLowerCase();
       const maxSubstringLengthForItems: { i1Length: number; i2Length: number } = { i1Length: 0, i2Length: 0 };
 
@@ -87,7 +87,7 @@ export const sortCategoriesSortFunctionsMap: Map<SortCategories, IVideoCategoryS
   ],
   [
     SortCategories.byAlphabet,
-    (i1: IVideoInfo, i2: IVideoInfo): number => {
+    (i1: IVideoInfoWithStatistics, i2: IVideoInfoWithStatistics): number => {
       return 1;
     },
   ],

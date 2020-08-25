@@ -28,6 +28,6 @@ export class LoginGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authInfo ? true : this.router.parseUrl('auth');
+    return this.authInfo ? true : this.router.parseUrl('auth/login');
   }
 }

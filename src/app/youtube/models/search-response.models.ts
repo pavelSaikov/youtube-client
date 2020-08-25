@@ -11,8 +11,19 @@ export interface IVideoStatistics {
   commentCount: string;
 }
 
+export interface IDetailedInfoResponse {
+  items: {
+    snippet: {
+      description: string;
+    };
+    statistics: IVideoStatistics;
+  }[];
+}
+
 export interface IVideoInfo {
-  id: string;
+  id: {
+    videoId: string;
+  };
   snippet: {
     publishedAt: string;
     title: string;
@@ -22,6 +33,9 @@ export interface IVideoInfo {
       high: IVideoImage;
     };
   };
+}
+
+export interface IVideoInfoWithStatistics extends IVideoInfo {
   statistics: IVideoStatistics;
 }
 

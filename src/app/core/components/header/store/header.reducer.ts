@@ -1,14 +1,21 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
 import { ISortingParams, SortCategories } from '../search-options/search-options.models';
-import { setSortingKeyWord, setSortingParams, setSortCategory } from './header.actions';
+import {
+  setIsSearchInputAvailable,
+  setSortingKeyWord,
+  setSortingParams,
+  setSortCategory,
+} from './header.actions';
 
 export interface IHeaderState {
   sortingParams: ISortingParams;
+  isSearchInputAvailable: boolean;
 }
 
 const HEADER_INITIAL_STATE: IHeaderState = {
   sortingParams: { sortCategory: SortCategories.byAlphabet, keyWord: '' },
+  isSearchInputAvailable: true,
 };
 
 const reducer: Function = createReducer(
@@ -22,6 +29,7 @@ const reducer: Function = createReducer(
     sortingParams: { ...state.sortingParams, keyWord: payload },
   })),
   on(setSortingParams, (state, { payload }) => ({ ...state, sortingParams: payload })),
+  on(setIsSearchInputAvailable, (state, { payload }) => ({ ...state, isSearchInputAvailable: payload })),
 );
 
 export function headerReducer(state: IHeaderState, action: Action): IHeaderState {

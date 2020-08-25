@@ -1,12 +1,12 @@
 // tslint:disable: typedef
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { IVideoInfo } from '../models/search-response.models';
+import { IVideoInfoWithStatistics } from '../models/search-response.models';
 import { setSearchResults, setVideoForDetailedDescription } from './youtube.actions';
 
 export interface IYoutubeState {
-  videoForDetailedDescription: IVideoInfo;
-  searchResults: IVideoInfo[];
+  videoForDetailedDescription: IVideoInfoWithStatistics;
+  searchResults: IVideoInfoWithStatistics[];
 }
 
 const INITIAL_YOUTUBE_STATE: IYoutubeState = {
