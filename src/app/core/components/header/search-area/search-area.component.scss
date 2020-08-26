@@ -26,6 +26,7 @@
 
 .youtube-logo {
   width: 65px;
+  cursor: pointer;
 }
 
 .input-container {
@@ -61,6 +62,18 @@
 .name {
   margin-right: 10px;
   color: $text-black;
+}
+
+.add-user-video-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 35px;
+  margin-left: 10px;
+  border-radius: 8px;
+  color: white;
+  background: $background-blue;
 }
 
 .logout-button {

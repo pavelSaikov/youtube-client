@@ -6,9 +6,10 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
   { path: 'registration', component: RegistrationPageComponent },
-  { path: '**', redirectTo: '404', pathMatch: 'full' },
+  { path: '**', redirectTo: '404' },
   { path: '404', component: ErrorComponent },
 ];
 

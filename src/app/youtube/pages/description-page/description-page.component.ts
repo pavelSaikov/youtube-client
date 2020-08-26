@@ -1,56 +1,33 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IVideoInfoWithStatistics } from '../../models/search-response.models';
-import { searchResultsSelector, videoForDetailedDescriptionSelector } from '../../store/youtube.selectors';
+import { videoForDetailedDescriptionSelector } from '../../../redux/selectors/youtube.selectors';
+import { IVideoDescription } from '../../models/video-description.models';
 
 @Component({
   selector: 'app-description-page',
   templateUrl: './description-page.component.html',
   styleUrls: ['./description-page.component.scss'],
 })
-export class DescriptionPageComponent implements OnInit, OnDestroy {
-  private subscriptions: Subscription = new Subscription();
-  private searchResults: IVideoInfoWithStatistics[];
-
-  private searchResults$: Observable<IVideoInfoWithStatistics[]> = this.store
-    .select(searchResultsSelector)
+export class DescriptionPageComponent {
+  public videoDescription$: Observable<IVideoDescription> = this.store
+    .select(videoForDetailedDescriptionSelector)
     .pipe(
-      map(searchResults => {
-        this.searchResults = searchResults;
-        return searchResults;
+      map((video: IVideoDescription) => {
+        if (!video) {
+          this.onBackClick();
+        }
+
+        return video;
       }),
     );
-
-  private paramMap$: Observable<ParamMap> = this.activatedRoute.paramMap.pipe(
-    map(params => {
-      if (!this.searchResults.length) {
-        this.router.navigateByUrl('');
-      }
-
-      return params;
-    }),
-  );
-
-  public videoDescription$: Observable<IVideoInfoWithStatistics> = this.store.select(
-    videoForDetailedDescriptionSelector,
-  );
 
   constructor(private store: Store, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   public onBackClick(): void {
     this.router.navigate([''], { relativeTo: this.activatedRoute });
-  }
-
-  public ngOnInit(): void {
-    this.subscriptions.add(this.searchResults$.subscribe());
-    this.subscriptions.add(this.paramMap$.subscribe());
-  }
-
-  public ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
   }
 }

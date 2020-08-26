@@ -5,7 +5,7 @@
   <div class="content-container">
     <div
       class="image-container"
-      [style.background-image]="'url(' + videoInfo.snippet.thumbnails.high.url + ')'"
+      [style.background-image]="'url(' + videoInfo.image + ')'"
       [style.background-size]="'cover'"
       [style.background-repeat]="'no-repeat'"
       [style.background-position]="'center center'"
@@ -14,20 +14,20 @@
 
     <div class="information-container">
       <div class="header-container">
-        <div class="title-container">{{ videoInfo.snippet.title }}</div>
-        <div class="date-container">{{ videoInfo.snippet.publishedAt | date: 'fullDate' }}</div>
+        <div class="date-container">{{ videoInfo.publishedAt | date: 'fullDate' }}</div>
+        <div class="title-container">{{ videoInfo.title }}</div>
       </div>
       <div class="description-text-container">
         <div class="description-header">Description:</div>
-        <div class="description-text">{{ videoInfo.snippet.description }}</div>
+        <div class="description-text">{{ videoInfo.description }}</div>
       </div>
-      <div class="statistics-container">
+      <div *ngIf="videoInfo.statistics" class="statistics-container">
         <app-video-statistics [statistics]="videoInfo.statistics"></app-video-statistics>
       </div>
     </div>
 
     <div class="video-description-container">
-      <app-publishing-indicator [publishingDate]="videoInfo.snippet.publishedAt"></app-publishing-indicator>
+      <app-publishing-indicator [publishingDate]="videoInfo.publishedAt"></app-publishing-indicator>
     </div>
   </div>
 </div>

@@ -1,11 +1,14 @@
 <div class="search-item-container">
   <div class="content-container">
     <div class="image-container">
-      <img src="{{ imageUrl }}" width="100%" />
+      <img src="{{ videoInfo.image }}" width="100%" />
     </div>
-    <app-video-statistics [statistics]="preparedStatistics"></app-video-statistics>
+    <app-video-statistics
+      *ngIf="videoInfo.statistics"
+      [statistics]="preparedStatistics"
+    ></app-video-statistics>
     <div class="title-container">
-      {{ title }}
+      {{ videoInfo.title }}
     </div>
     <div class="button-container" (click)="onMoreClick()">
       <div class="button-image-container">
@@ -13,5 +16,5 @@
       </div>
     </div>
   </div>
-  <app-publishing-indicator [publishingDate]="publishingDate"></app-publishing-indicator>
+  <app-publishing-indicator [publishingDate]="videoInfo.publishedAt"></app-publishing-indicator>
 </div>

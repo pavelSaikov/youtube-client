@@ -25,13 +25,13 @@ export interface IVideoInfo {
     videoId: string;
   };
   snippet: {
-    publishedAt: string;
     title: string;
     description: string;
     thumbnails: {
       medium: IVideoImage;
       high: IVideoImage;
     };
+    publishedAt: string;
   };
 }
 

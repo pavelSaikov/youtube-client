@@ -1,7 +1,7 @@
 // tslint:disable: typedef
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { setAuthInfo, setUserName } from './auth.actions';
+import { setAuthInfo, setUserName } from '../actions/auth.actions';
 
 export interface IUserName {
   firstName: string;

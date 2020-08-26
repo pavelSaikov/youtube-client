@@ -1,3 +1,4 @@
+import { setSearchResults } from './../../../../redux/actions/youtube.actions';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -13,12 +14,11 @@ import { Observable, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 
 import { LoginService } from '../../../../auth/services/login/login.service';
-import { setAuthInfo, setUserName } from '../../../../auth/store/auth.actions';
-import { IUserName } from '../../../../auth/store/auth.reducer';
-import { userNameSelector } from '../../../../auth/store/auth.selectors';
-import { setSearchResults } from '../../../../youtube/store/youtube.actions';
-import { searchVideos } from '../store/header.actions';
-import { isSearchInputAvailableSelector } from '../store/header.selectors';
+import { setAuthInfo, setUserName } from '../../../../redux/actions/auth.actions';
+import { searchVideos, setIsSearchInputAvailable } from '../../../../redux/actions/header.actions';
+import { IUserName } from '../../../../redux/reducers/auth.reducer';
+import { userNameSelector } from '../../../../redux/selectors/auth.selectors';
+import { isSearchInputAvailableSelector } from '../../../../redux/selectors/header.selectors';
 
 @Component({
   selector: 'app-search-area',
@@ -29,13 +29,13 @@ import { isSearchInputAvailableSelector } from '../store/header.selectors';
 export class SearchAreaComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
   private searchTerms: Subject<string> = new Subject<string>();
-  private isSearchInputAvailable: boolean;
 
   private isSearchInputAvailable$: Observable<boolean> = this.store
     .select(isSearchInputAvailableSelector)
     .pipe(
       map((isSearchInputAvailable: boolean) => {
         this.isSearchInputAvailable = isSearchInputAvailable;
+        this.changeDetectorRef.detectChanges();
         return isSearchInputAvailable;
       }),
     );
@@ -46,13 +46,13 @@ export class SearchAreaComponent implements OnInit, OnDestroy {
     debounceTime(500),
     switchMap((videoName: string) => {
       this.store.dispatch(searchVideos({ payload: videoName }));
-      console.log(videoName);
       return videoName;
     }),
   );
 
   @Output() public toggleSortingOptionsMenu: EventEmitter<void> = new EventEmitter<void>();
 
+  public isSearchInputAvailable: boolean;
   public userName: IUserName;
   public videoName: string;
 
@@ -88,11 +88,20 @@ export class SearchAreaComponent implements OnInit, OnDestroy {
     this.searchTerms.next(this.videoName);
   }
 
+  public onYoutubeButtonClick(): void {
+    this.router.navigateByUrl('search');
+  }
+
+  public onAddUserVideoButtonClick(): void {
+    this.router.navigateByUrl('search/add-video');
+  }
+
   public onLogoutClick(): void {
     this.loginService.logout();
     this.store.dispatch(setAuthInfo({ payload: null }));
     this.store.dispatch(setUserName({ payload: null }));
     this.store.dispatch(setSearchResults({ payload: [] }));
+    this.store.dispatch(setIsSearchInputAvailable({ payload: false }));
     this.videoName = '';
     this.router.navigateByUrl('/auth/login');
     this.changeDetectorRef.detectChanges();

@@ -1,12 +1,13 @@
 <div class="search-area-container">
   <div class="searching-area">
     <div class="svg-container youtube-logo">
-      <img src="../../../../assets/youtube-logo.svg" width="100%" />
+      <img src="../../../../assets/youtube-logo.svg" width="100%" (click)="onYoutubeButtonClick()" />
     </div>
     <div class="input-container">
       <input
         [(ngModel)]="videoName"
         class="input"
+        [disabled]="!isSearchInputAvailable"
         placeholder="What are you want to find out?"
         (input)="onSearchInput()"
       />
@@ -20,6 +21,7 @@
     <div class="svg-container square-button">
       <img src="../../../../assets//login.svg" width="100%" />
     </div>
+    <div class="square-button add-user-video-button" (click)="onAddUserVideoButtonClick()">+</div>
     <div class="logout-button" (click)="onLogoutClick()">{{ userName ? 'Logout' : 'Login' }}</div>
   </div>
 </div>
