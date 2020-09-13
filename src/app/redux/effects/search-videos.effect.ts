@@ -1,13 +1,13 @@
+import { setSearchResults } from './../actions/youtube.actions';
 // tslint:disable: typedef
 import { Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap } from 'rxjs/operators';
 
-import { IVideoInfoWithStatistics } from '../../../../../youtube/models/search-response.models';
-import { YoutubeService } from '../../../../../youtube/services/youtube-service/youtube.service';
-import { setSearchResults } from '../../../../../youtube/store/youtube.actions';
-import { searchVideos } from '../header.actions';
+import { IVideoInfoWithStatistics } from '../../youtube/models/search-response.models';
+import { YoutubeService } from '../../youtube/services/youtube-service/youtube.service';
+import { searchVideos } from '../actions/header.actions';
 
 @Injectable()
 export class SearchVideosEffect {

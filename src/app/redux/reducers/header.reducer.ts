@@ -1,12 +1,15 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { ISortingParams, SortCategories } from '../search-options/search-options.models';
+import {
+  ISortingParams,
+  SortCategories,
+} from '../../core/components/header/search-options/search-options.models';
 import {
   setIsSearchInputAvailable,
   setSortingKeyWord,
   setSortingParams,
   setSortCategory,
-} from './header.actions';
+} from '../actions/header.actions';
 
 export interface IHeaderState {
   sortingParams: ISortingParams;

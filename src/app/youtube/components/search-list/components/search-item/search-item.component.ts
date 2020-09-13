@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
+import { ISearchItem } from '../../../../models/search-item.models';
 import { IVideoStatistics } from '../../../../models/search-response.models';
 
 @Component({
@@ -8,11 +9,7 @@ import { IVideoStatistics } from '../../../../models/search-response.models';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent implements OnChanges {
-  @Input() public imageUrl: string;
-  @Input() public statistics: IVideoStatistics;
-  @Input() public title: string;
-  @Input() public publishingDate: string;
-  @Input() public id: string;
+  @Input() public videoInfo: ISearchItem;
 
   @Output() public showDescription: EventEmitter<string> = new EventEmitter<string>();
 
@@ -37,14 +34,18 @@ export class SearchItemComponent implements OnChanges {
   }
 
   public onMoreClick(): void {
-    this.showDescription.emit(this.id);
+    this.showDescription.emit(this.videoInfo.id);
   }
 
   public ngOnChanges(): void {
-    const likeCount: string = this.convertStringNumber(this.statistics.likeCount);
-    const dislikeCount: string = this.convertStringNumber(this.statistics.dislikeCount);
-    const viewCount: string = this.convertStringNumber(this.statistics.viewCount);
-    const commentCount: string = this.convertStringNumber(this.statistics.commentCount);
+    if (!this.videoInfo.statistics) {
+      return;
+    }
+
+    const likeCount: string = this.convertStringNumber(this.videoInfo.statistics.likeCount);
+    const dislikeCount: string = this.convertStringNumber(this.videoInfo.statistics.dislikeCount);
+    const viewCount: string = this.convertStringNumber(this.videoInfo.statistics.viewCount);
+    const commentCount: string = this.convertStringNumber(this.videoInfo.statistics.commentCount);
 
     const preparedStatistics: IVideoStatistics = { likeCount, dislikeCount, viewCount, commentCount };
     this.preparedStatistics = preparedStatistics;

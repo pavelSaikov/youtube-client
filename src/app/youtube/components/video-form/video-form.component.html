@@ -1,0 +1,22 @@
+<div class="form-container">
+  <div class="header-container">Create New Card</div>
+  <div class="field-container">
+    <div class="field-header">Title</div>
+    <app-form-field (validateValue)="onTitleInput($event)"></app-form-field>
+  </div>
+  <div class="field-container">
+    <div class="field-header">Description</div>
+    <app-form-field (validateValue)="onDescriptionInput($event)"></app-form-field>
+  </div>
+  <div class="field-container">
+    <div class="field-header">Image</div>
+    <app-form-field (validateValue)="onImageUrlInput($event)"></app-form-field>
+  </div>
+  <div class="field-container">
+    <div class="field-header">Video Link</div>
+    <app-form-field (validateValue)="onVideoUrlInput($event)"></app-form-field>
+  </div>
+  <div class="buttons-container">
+    <div class="button" (click)="onCreateCardClick()">Create Card</div>
+  </div>
+</div>

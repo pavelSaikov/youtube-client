@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { Feature } from '../store/index';
+import { SearchVideosEffect } from '../redux/effects/search-videos.effect';
+import { headerReducer } from '../redux/reducers/header.reducer';
+import { Feature } from '../redux/state.models';
 import { HeaderComponent } from './components/header/header.component';
-import { HEADER_EFFECTS } from './components/header/store/effects/index';
-import { headerReducer } from './components/header/store/header.reducer';
 import { CORE_COMPONENTS } from './components/index';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { CORE_COMPONENTS } from './components/index';
     CommonModule,
     StoreModule.forFeature(Feature.Header, headerReducer),
     FormsModule,
-    EffectsModule.forFeature(HEADER_EFFECTS),
+    EffectsModule.forFeature([SearchVideosEffect]),
   ],
   exports: [HeaderComponent],
 })

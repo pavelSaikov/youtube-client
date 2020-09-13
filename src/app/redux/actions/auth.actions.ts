@@ -1,9 +1,8 @@
 // tslint:disable: typedef
 import { createAction, props } from '@ngrx/store';
-import { IUserName } from 'src/app/auth/store/auth.reducer';
 
-import { IActionPayload } from '../../store/index';
-import { IAuthInfo } from './auth.reducer';
+import { IAuthInfo, IUserName } from '../reducers/auth.reducer';
+import { IActionPayload } from '../state.models';
 
 export const setAuthInfo = createAction(
   '[Authorization] Set Authorization Info',

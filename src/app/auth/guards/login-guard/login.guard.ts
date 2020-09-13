@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IAuthInfo } from '../../store/auth.reducer';
-import { authInfoSelector } from '../../store/auth.selectors';
+import { IAuthInfo } from '../../../redux/reducers/auth.reducer';
+import { authInfoSelector } from '../../../redux/selectors/auth.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -24,10 +24,7 @@ export class LoginGuard implements CanActivate {
     this.authInfo$.subscribe();
   }
 
-  public canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authInfo ? true : this.router.parseUrl('auth/login');
+  public canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.authInfo ? true : this.router.parseUrl('auth');
   }
 }

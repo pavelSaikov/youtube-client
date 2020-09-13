@@ -1,8 +1,11 @@
 // tslint:disable: typedef
 import { createAction, props } from '@ngrx/store';
 
-import { IActionPayload } from '../../../../store/index';
-import { ISortingParams, SortCategories } from '../search-options/search-options.models';
+import {
+  ISortingParams,
+  SortCategories,
+} from '../../core/components/header/search-options/search-options.models';
+import { IActionPayload } from '../state.models';
 
 export const setSortCategory = createAction(
   '[Header] Set Sort Category',

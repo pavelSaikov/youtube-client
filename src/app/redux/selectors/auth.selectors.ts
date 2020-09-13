@@ -1,7 +1,7 @@
 // tslint:disable: typedef
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { Feature } from '../../store/index';
+import { Feature } from '../state.models';
 
 const featureSelector = createFeatureSelector(Feature.Authorization);
 

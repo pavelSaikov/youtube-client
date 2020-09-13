@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IUserName } from 'src/app/auth/store/auth.reducer';
+import { IUserName } from 'src/app/redux/reducers/auth.reducer';
 
-import { setAuthInfo, setUserName } from './auth/store/auth.actions';
-import { IAuthInfo } from './auth/store/auth.reducer';
+import { setAuthInfo, setUserName } from './redux/actions/auth.actions';
+import { IAuthInfo } from './redux/reducers/auth.reducer';
 
 @Component({
   selector: 'app-root',

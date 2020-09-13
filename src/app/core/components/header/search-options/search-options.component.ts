@@ -4,8 +4,12 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { setSortingKeyWord, setSortingParams, setSortCategory } from '../store/header.actions';
-import { sortingParamsSelector } from '../store/header.selectors';
+import {
+  setSortingKeyWord,
+  setSortingParams,
+  setSortCategory,
+} from '../../../../redux/actions/header.actions';
+import { sortingParamsSelector } from '../../../../redux/selectors/header.selectors';
 import { ISortingParams, SortCategories } from './search-options.models';
 
 @Component({
